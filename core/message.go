@@ -104,7 +104,7 @@ func cmsgExtToGo(cmsg *C.struct_CMessageExt) *MessageExt {
 	gomsg.Topic = C.GoString(C.GetMessageTopic(cmsg))
 	gomsg.Tags = C.GoString(C.GetMessageTags(cmsg))
 	gomsg.Keys = C.GoString(C.GetMessageKeys(cmsg))
-	gomsg.Body = C.GoStringN(C.GetMessageBody(cmsg),C.GetMessageStoreSize(cmsg))
+	gomsg.Body = C.GoStringN(C.GetMessageBody(cmsg),C.GetMessageBodySize(cmsg))
 	gomsg.MessageID = C.GoString(C.GetMessageId(cmsg))
 	gomsg.DelayTimeLevel = int(C.GetMessageDelayTimeLevel(cmsg))
 	gomsg.QueueId = int(C.GetMessageQueueId(cmsg))
