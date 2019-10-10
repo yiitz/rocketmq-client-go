@@ -56,7 +56,7 @@ func goMsgToC(gomsg *Message) *C.struct_CMessage {
 	C.free(unsafe.Pointer(cs))
 
 	cs = C.CString(gomsg.Body)
-	C.SetMessageBody(cmsg, cs)
+	C.SetByteMessageBody(cmsg, cs, C.int(len(gomsg.Body)))
 	C.free(unsafe.Pointer(cs))
 
 	C.SetDelayTimeLevel(cmsg, C.int(gomsg.DelayTimeLevel))
